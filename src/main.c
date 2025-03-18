@@ -39,10 +39,23 @@ static void pin_config(uint8_t pin){
   *pin_address |= 0x05;
 }
 
-static inline void core1_entry(void){
-
+void pin_set_high(void){
+  
 }
 
-static inline void core0_entry(void){
+void pin_set_low(void){
   
+}
+
+int main(void){
+  pin_config(1);
+  
+  for(;;){
+    pin_set_high();
+    delay(1000);
+    pin_set_low();
+    delay(1000);
+  }
+  
+  return 0;
 }
