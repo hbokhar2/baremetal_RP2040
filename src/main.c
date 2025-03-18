@@ -1,5 +1,8 @@
 #include <stdint.h>
 
+//Offset GPIO_BASE by 0x004 from base to get to the control register. 0x000 is the status register.
+/* The controller has 8 bytes allocated to each pin. 4 bytes is read only that allows you to read pin status with the other 4 bytes having RW access and allowing you to
+control the register.*/
 #define GPIO_BASE 0x40014000
 #define FUNCSEL_MASK 0x1F
 #define TIME_BASE 0x40054000
@@ -34,7 +37,7 @@ static void delay(uint64_t ms){
 }
 
 static void pin_config(uint8_t pin){
-  uint32_t* pin_address = (uint32_t*)GPIO_BASE + pin;
+  uint32_t* pin_address = (uint32_t*)GPIO_BASE + (uint32_t)pin;
   *pin_address &= ~FUNCSEL_MASK; 
   *pin_address |= 0x05;
 }
