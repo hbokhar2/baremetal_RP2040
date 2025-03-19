@@ -1,5 +1,5 @@
 #include <stdint.h>
-
+//poop
 //Offset GPIO_BASE by 0x004 from base to get to the control register. 0x000 is the status register.
 /* The controller has 8 bytes allocated to each pin. 4 bytes is read only that allows you to read pin status with the other 4 bytes having RW access and allowing you to
 control the register.*/
